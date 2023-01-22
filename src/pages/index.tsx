@@ -25,6 +25,8 @@ const IndexPage: NextPageWithLayout = () => {
     },
   });
 
+  const hello = trpc.hello.useQuery({ text: 'init' });
+
   // prefetch all posts for instant navigation
   // useEffect(() => {
   //   const allPosts = postsQuery.data?.pages.flatMap((page) => page.items) ?? [];
@@ -35,7 +37,7 @@ const IndexPage: NextPageWithLayout = () => {
 
   return (
     <>
-      <h1>Welcome to your tRPC starter!</h1>
+      <h1>Welcome {hello.data?.greeting} to your tRPC starter!</h1>
       <p>
         If you get stuck, check <a href="https://trpc.io">the docs</a>, write a
         message in our <a href="https://trpc.io/discord">Discord-channel</a>, or
